@@ -1,0 +1,70 @@
+export const Loader = () => {
+	return (
+		<div className='flex items-center justify-center py-3'>
+			<div className='w-20 h-10' >
+				<svg
+					xmlns='http://www.w3.org/2000/svg'
+					viewBox='0 0 200 200'
+				>
+					<circle
+						fill='#64028A'
+						stroke='#64028A'
+						stroke-width='3'
+						r='15'
+						cx='40'
+						cy='65'
+					>
+						<animate
+							attributeName='cy'
+							calcMode='spline'
+							dur='2'
+							values='65;135;65;'
+							keySplines='.5 0 .5 1;.5 0 .5 1'
+							repeatCount='indefinite'
+							begin='-.4'
+						></animate>
+					</circle>
+					<circle
+						fill='#64028A'
+						stroke='#64028A'
+						stroke-width='3'
+						r='15'
+						cx='100'
+						cy='65'
+					>
+						<animate
+							attributeName='cy'
+							calcMode='spline'
+							dur='2'
+							values='65;135;65;'
+							keySplines='.5 0 .5 1;.5 0 .5 1'
+							repeatCount='indefinite'
+							begin='-.2'
+						></animate>
+					</circle>
+					<circle
+						fill='#64028A'
+						stroke='#64028A'
+						stroke-width='3'
+						r='15'
+						cx='160'
+						cy='65'
+					>
+						<animate
+							attributeName='cy'
+							calcMode='spline'
+							dur='2'
+							values='65;135;65;'
+							keySplines='.5 0 .5 1;.5 0 .5 1'
+							repeatCount='indefinite'
+							begin='0'
+						></animate>
+					</circle>
+				</svg>
+			</div>
+			{/* <div className='w-20'>
+				<Loader2 className='animate-spin w-10 h-10' />
+			</div> */}
+		</div>
+	);
+};
