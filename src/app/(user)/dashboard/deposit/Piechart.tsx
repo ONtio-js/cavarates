@@ -16,8 +16,8 @@ const Piechart = ({
 	return (
 		<div>
 			<PieChart
-				width={250}
-				height={250}
+				width={200}
+				height={200}
 			>
 				<Pie
 					data={data}

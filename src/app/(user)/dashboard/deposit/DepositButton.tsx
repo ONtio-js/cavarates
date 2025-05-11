@@ -47,17 +47,13 @@ const DepositButton = ({ method }: { method: PaymentMethod }) => {
 	});
 
 	const onSubmit = async (data: z.infer<typeof depositSchema>) => {
-		console.log('Form submitted with data:', data);
 		try {
 			const formData = new FormData();
 			formData.append('amount', data.amount);
 			formData.append('method', data.method);
-			console.log('FormData created:', Object.fromEntries(formData));
 			startTransition(async () => {
 				try {
-					console.log('Calling deposit action...');
 					const res = await deposit(formData);
-					console.log('Deposit response:', res);
 					if (res.success) {
 						toast.success(res.success, {
 							position: 'top-center',
@@ -111,8 +107,8 @@ const DepositButton = ({ method }: { method: PaymentMethod }) => {
 			open={open}
 			onOpenChange={setOpen}
 		>
-			<DialogTrigger asChild>
-				<Button className='bg-green-500 hover:bg-green-600 text-white'>
+			<DialogTrigger asChild >
+				<Button className='bg-green-500 hover:bg-green-600 text-white max-w-[80px]'>
 					Deposit
 				</Button>
 			</DialogTrigger>
@@ -135,7 +131,7 @@ const DepositButton = ({ method }: { method: PaymentMethod }) => {
 								alt={method?.name || 'bitcoin'}
 								width={100}
 								height={100}
-								className='w-[200px] h-[200px] object-cover'
+								className='w-full  object-cover'
 							/>
 							<div className='flex flex-col gap-5 col-span-2'>
 								<p className='text-white'>
@@ -173,26 +169,26 @@ const DepositButton = ({ method }: { method: PaymentMethod }) => {
 									<span className='text-[10px] md:text-xs truncate font-medium'>
 										{method?.address || ''}
 									</span>
-									<Button
-										type='button'
-										className='px-5 bg-orange-500 hover:bg-orange-600 rounded-l-none text-white'
-										onClick={() => {
-											if (method?.address) {
-												navigator.clipboard.writeText(
-													method.address
-												);
-												toast.success(
-													'Address copied to clipboard',
-													{
-														position: 'top-center',
-													}
-												);
-											}
-										}}
-									>
-										Copy
-									</Button>
 								</div>
+								<Button
+									type='button'
+									className='px-5 bg-orange-500 hover:bg-orange-600 max-w-[100px] text-white'
+									onClick={() => {
+										if (method?.address) {
+											navigator.clipboard.writeText(
+												method.address
+											);
+											toast.success(
+												'Address copied to clipboard',
+												{
+													position: 'top-center',
+												}
+											);
+										}
+									}}
+								>
+									Copy
+								</Button>
 							</div>
 						</div>
 						<div className='mt-10 flex justify-end gap-2 border-t pt-4 w-full'>

@@ -16,27 +16,7 @@ const Referrals = () => {
 		amount: number;
 		date: string;
 	}[] = [
-		{
-			id: 1,
-			name: 'John Doe',
-			email: 'john.doe@example.com',
-			amount: 100,
-			date: '2021-01-01',
-		},
-		{
-			id: 2,
-			name: 'Jane Doe',
-			email: 'jane.doe@example.com',
-			amount: 200,
-			date: '2021-01-02',
-		},
-		{
-			id: 3,
-			name: 'John Doe',
-			email: 'john.doe@example.com',
-			amount: 100,
-			date: '2021-01-01',
-		},
+		
 	];
 	return (
 		<>
@@ -67,7 +47,7 @@ const Referrals = () => {
 				<div className='hidden md:flex items-center justify-between'>
 					<p>Your Referral Link</p>
 					<p className='bg-white text-black px-5 py-2 rounded-md'>
-						https://stocktrader.com/referral/1234567890
+						https://cavarates.com/auth/signup?referral=1234567890
 					</p>
 				</div>
 			</div>

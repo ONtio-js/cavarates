@@ -120,7 +120,7 @@ const Deposit = async () => {
 								key={method.id}
 								className='grid grid-cols-3 items-center gap-5'
 							>
-								<div className='flex items-center gap-2'>
+								<div className='flex items-center gap-2 '>
 									<Image
 										src={method.image}
 										alt={method.name}
@@ -134,18 +134,10 @@ const Deposit = async () => {
 										<span>{method.network}</span>
 									</div>
 								</div>
-								{/* <Button
-									onClick={() => {
-										setMethod(method);
-										console.log(method);
-										setShow(true);
-									}}
-									size={'sm'}
-									className='bg-green-500 text-white ml-2 hover:bg-green-600'
-								>
-									Deposit 
-								</Button> */}
-								<DepositButton method={method} />
+								<div className=' flex justify-end'>
+									<DepositButton method={method} />
+								</div>
+
 								<div className='flex flex-col items-start gap-1 text-sm min-w-[300px]'>
 									<span>
 										Processng Time:{method.processingTime}

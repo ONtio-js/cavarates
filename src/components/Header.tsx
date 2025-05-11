@@ -271,6 +271,7 @@ const Header: React.FC = () => {
 									</div>
 								</div>
 							</div>
+							
 						</nav>
 					</div>
 				</div>
@@ -384,8 +385,6 @@ const Header: React.FC = () => {
 						padding: 0;
 						margin: 0;
 					}
-
-					
 
 					.menu-link {
 						display: block;

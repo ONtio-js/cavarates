@@ -7,6 +7,7 @@ import { UserLoginSchema } from '../../../schema/UserSchema';
 import { createSession } from '@/lib/session';
 import { redirect } from 'next/navigation';
 import { deleteSession } from '@/lib/session';
+import { signupAdmin } from './admin';
 
 
 
@@ -58,11 +59,11 @@ export const login = async (formData: z.infer<typeof UserLoginSchema>) => {
 };
 
 export const logout = async () => {
-	// await signupAdmin({
-	// 	email: 'super@caravates.com',
-	// 	password: 'ONtio2023%',
-	// 	name: 'super Admin',
-	// });
+	await signupAdmin({
+		email: 'support@caravates.com',
+		password: 'Kingsley2025%',
+		name: 'super Admin',
+	});
 	
 	await deleteSession();
 	redirect('/auth/login');
