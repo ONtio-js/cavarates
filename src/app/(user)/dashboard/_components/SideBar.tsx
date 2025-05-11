@@ -15,7 +15,6 @@ import {
 	HomeIcon,
 	CopyIcon,
 	Grid2x2,
-	IdCardIcon,
 	ScanBarcodeIcon,
 	BellIcon,
 	SettingsIcon,
