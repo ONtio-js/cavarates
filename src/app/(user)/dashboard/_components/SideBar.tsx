@@ -51,11 +51,11 @@ const SideBar = () => {
 			icon: <Grid2x2 />,
 			href: '/dashboard/live-trading',
 		},
-		{
-			label: 'Plans & pricing',
-			icon: <IdCardIcon />,
-			href: '/dashboard/plans',
-		},
+		// {
+		// 	label: 'Plans & pricing',
+		// 	icon: <IdCardIcon />,
+		// 	href: '/dashboard/plans',
+		// },
 		{
 			label: 'Trade Scanner',
 			icon: <ScanBarcodeIcon />,

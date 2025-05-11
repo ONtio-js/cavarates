@@ -1,7 +1,9 @@
-export const Loader = () => {
+'use client';
+
+export function Loader() {
 	return (
 		<div className='flex items-center justify-center py-3'>
-			<div className='w-20 h-10' >
+			<div className='w-20 h-10'>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
 					viewBox='0 0 200 200'
@@ -62,9 +64,6 @@ export const Loader = () => {
 					</circle>
 				</svg>
 			</div>
-			{/* <div className='w-20'>
-				<Loader2 className='animate-spin w-10 h-10' />
-			</div> */}
 		</div>
 	);
-};
+}

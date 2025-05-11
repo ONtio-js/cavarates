@@ -210,6 +210,10 @@ const config = {
         "fromEnvVar": null,
         "value": "darwin",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "rhel-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -227,16 +231,17 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres.gxdlcqncxpaoyslvpwqo:Caravates2025%@aws-0-eu-central-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+        "value": null
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\nmodel User {\n  id                String        @id @default(uuid())\n  name              String\n  phone             String\n  address           String\n  country           String\n  AccountType       String\n  email             String        @unique\n  password          String\n  confirm           String?\n  token             String?\n  isVerified        Boolean       @default(false)\n  refbonus          Int?          @default(0)\n  refcode           String?\n  walletBalance     Int?          @default(0)\n  ethAddress        String?\n  btcAddress        String?\n  usdtAddress       String?\n  investmentBalance Int?          @default(0)\n  profitBalance     Int?          @default(0)\n  targetBalance     Int?          @default(0)\n  updatedAt         DateTime      @updatedAt\n  createdAt         DateTime      @default(now())\n  sessions          Session[]\n  transactions      Transaction[]\n}\n\nmodel Admin {\n  id        String         @id @default(uuid())\n  name      String\n  email     String         @unique\n  password  String\n  createdAt DateTime       @default(now())\n  sessions  AdminSession[]\n}\n\nmodel AdminSession {\n  id        String   @id @default(uuid())\n  adminId   String\n  token     String   @unique\n  expiresAt DateTime\n  createdAt DateTime @default(now())\n  admin     Admin    @relation(fields: [adminId], references: [id])\n}\n\nmodel Transaction {\n  id              String   @id @default(uuid())\n  userId          String\n  paymentMethod   String\n  transactionId   String\n  status          String\n  transactionType String\n  postType        String\n  amount          Int\n  type            String\n  pair            String?\n  createdAt       DateTime @default(now())\n  date            DateTime @default(now())\n  user            User     @relation(fields: [userId], references: [id])\n}\n\nmodel PaymentMethod {\n  id          String   @id @default(uuid())\n  name        String\n  address     String\n  description String\n  createdAt   DateTime @default(now())\n}\n\nmodel Session {\n  id        String   @id @default(uuid())\n  userId    String\n  token     String   @unique\n  expiresAt DateTime\n  createdAt DateTime @default(now())\n  user      User     @relation(fields: [userId], references: [id])\n}\n",
-  "inlineSchemaHash": "99af53a2f08e790545ea0efcbb24b855383d814f1c35c950fa1e431dfc4c622f",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../src/generated/prisma\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\nmodel User {\n  id                String        @id @default(uuid())\n  name              String\n  phone             String\n  address           String\n  country           String\n  AccountType       String\n  email             String        @unique\n  password          String\n  confirm           String?\n  token             String?\n  isVerified        Boolean       @default(false)\n  refbonus          Int?          @default(0)\n  refcode           String?\n  walletBalance     Int?          @default(0)\n  ethAddress        String?\n  btcAddress        String?\n  usdtAddress       String?\n  investmentBalance Int?          @default(0)\n  profitBalance     Int?          @default(0)\n  targetBalance     Int?          @default(0)\n  updatedAt         DateTime      @updatedAt\n  createdAt         DateTime      @default(now())\n  sessions          Session[]\n  transactions      Transaction[]\n}\n\nmodel Admin {\n  id        String         @id @default(uuid())\n  name      String\n  email     String         @unique\n  password  String\n  createdAt DateTime       @default(now())\n  sessions  AdminSession[]\n}\n\nmodel AdminSession {\n  id        String   @id @default(uuid())\n  adminId   String\n  token     String   @unique\n  expiresAt DateTime\n  createdAt DateTime @default(now())\n  admin     Admin    @relation(fields: [adminId], references: [id])\n}\n\nmodel Transaction {\n  id              String   @id @default(uuid())\n  userId          String\n  paymentMethod   String\n  transactionId   String\n  status          String\n  transactionType String\n  postType        String\n  amount          Int\n  type            String\n  pair            String?\n  createdAt       DateTime @default(now())\n  date            DateTime @default(now())\n  user            User     @relation(fields: [userId], references: [id])\n}\n\nmodel PaymentMethod {\n  id          String   @id @default(uuid())\n  name        String\n  address     String\n  description String\n  createdAt   DateTime @default(now())\n}\n\nmodel Session {\n  id        String   @id @default(uuid())\n  userId    String\n  token     String   @unique\n  expiresAt DateTime\n  createdAt DateTime @default(now())\n  user      User     @relation(fields: [userId], references: [id])\n}\n",
+  "inlineSchemaHash": "cf5a6997bde0fba5ddcf124451f1e2d9bb0973f2ff387f406f37f0ab8f3e87f3",
   "copyEngine": true
 }
 config.dirname = '/'

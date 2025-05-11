@@ -52,7 +52,7 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
 								href='/privacy-policy'
 								className='text-sm font-medium'
 							>
-								Terms of Service
+								Terms 
 							</Link>
 						</p>
 					</div>
