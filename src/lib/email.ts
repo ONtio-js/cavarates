@@ -113,7 +113,7 @@ export const emailTemplates: EmailTemplates = {
 		html: `
 		${emailStyles}
 		<div class="container">
-			<img src="https://cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
+			<img src="https://www.cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
 			<h1>Welcome to Cavarates, ${name}!</h1>
 			<p>Thank you for registering with us. We're excited to have you on board!</p>
 			<h4>Your Verification Token is: <strong>${token}</strong></h4>
@@ -131,7 +131,7 @@ export const emailTemplates: EmailTemplates = {
 		html: `
 		${emailStyles}
 		<div class="container">
-			<img src="https://cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
+			<img src="https://www.cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
 			<h1>Password Reset Request</h1>
 			<p>You have requested to reset your password. Click the button below to reset your password:</p>
 			<a href="${data.link}" class="button">Reset Password</a>
@@ -147,7 +147,7 @@ export const emailTemplates: EmailTemplates = {
 		html: `
 		${emailStyles}
 		<div class="container">
-			<img src="https://cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
+			<img src="https://www.cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
 			<h1>Deposit Request</h1>
 			<p>You have requested to deposit <span class="amount">$${data.amount}</span> into your account.</p>
 			<div class="footer">
@@ -161,7 +161,7 @@ export const emailTemplates: EmailTemplates = {
 		html: `
 		${emailStyles}
 		<div class="container">
-			<img src="https://cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
+			<img src="https://www.cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
 			<h1>Deposit Confirmation</h1>
 			<p>Your deposit of <span class="amount">$${data.amount}</span> has been confirmed.</p>
 			<div class="footer">
@@ -175,7 +175,7 @@ export const emailTemplates: EmailTemplates = {
 		html: `
 		${emailStyles}
 		<div class="container">
-			<img src="https://cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
+			<img src="https://www.cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
 			<h1>Withdrawal Request</h1>
 			<p>You have requested to withdraw <span class="amount">$${data.amount}</span> from your account.</p>
 			<div class="footer">
@@ -189,7 +189,7 @@ export const emailTemplates: EmailTemplates = {
 		html: `
 		${emailStyles}
 		<div class="container">
-			<img src="https://cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
+			<img src="https://www.cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
 			<h1>Withdrawal Confirmation</h1>
 			<p>Your withdrawal of <span class="amount">$${data.amount}</span> has been confirmed.</p>
 			<div class="footer">
@@ -203,7 +203,7 @@ export const emailTemplates: EmailTemplates = {
 		html: `
 		${emailStyles}
 		<div class="container">
-			<img src="https://cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
+			<img src="https://www.cavarates.com/logo.png" alt="cavarates Logo" class="logo" />
 			<h1>Trade Confirmation</h1>
 			<p>Trade of <span class="amount">$${data.amount} ${data.symbol}</span> with order type ${data.type} has been successfully executed.</p>
 			<div class="footer">
