@@ -1,12 +1,22 @@
 'use client';
 import React from 'react';
 
+interface BrevoConversationsQueue {
+	q: unknown[][];
+}
+
+interface BrevoConversationsFunction {
+	(...args: unknown[]): void;
+	q?: unknown[][];
+}
+
 declare global {
 	interface Window {
-		chatwootSettings?: any;
-		chatwootSDK?: any;
+		chatwootSettings?: Record<string, unknown>;
+		chatwootSDK?: Record<string, unknown>;
 		BrevoConversationsID?: string;
-		[key: string]: any;
+		BrevoConversations?: BrevoConversationsFunction;
+		[key: string]: unknown;
 	}
 }
 
@@ -17,12 +27,21 @@ class ChatwootWidget extends React.Component {
 		// Paste the script from inbox settings except the <script> tag
 		(function (d, w, c) {
 			w.BrevoConversationsID = '682202610736a833690bb3be';
-			w[c] =
-				w[c] ||
-				function () {
-					(w[c].q = w[c].q || []).push(arguments);
+			(w as Window & { [key: string]: BrevoConversationsFunction })[c] =
+				(w as Window & { [key: string]: BrevoConversationsFunction })[
+					c
+				] ||
+				function (...args: unknown[]) {
+					((w as Window & { [key: string]: BrevoConversationsQueue })[
+						c
+					].q =
+						(
+							w as Window & {
+								[key: string]: BrevoConversationsQueue;
+							}
+						)[c].q || []).push(args);
 				};
-			var s = d.createElement('script');
+			const s = d.createElement('script');
 			s.async = true;
 			s.src =
 				'https://conversations-widget.brevo.com/brevo-conversations.js';
