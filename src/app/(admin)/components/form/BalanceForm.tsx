@@ -14,14 +14,26 @@ import { Input } from '@/components/ui/input';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { User } from '@/generated/prisma';
 import { useTransition } from 'react';
 import { updateUserBalance } from '../../../../actions/admin/updateUserBalance';
-import {  useEffect } from 'react';
+import { useEffect } from 'react';
 import { Loader } from '@/components/Loader';
 import { toast } from 'sonner';
 
-const BalanceForm = ({ user }: { user: User | null }) => {
+type UserData = {
+	id: string;
+	name: string;
+	email: string;
+	phone: string;
+	walletBalance: number | null;
+	refcode: string | null;
+	isVerified: boolean;
+	createdAt: Date;
+	profitBalance?: number | null;
+	investmentBalance?: number | null;
+};
+
+const BalanceForm = ({ user }: { user: UserData | null }) => {
 	const [isPending, startTransition] = useTransition();
 
 	const form = useForm<z.infer<typeof BalanceSchema>>({

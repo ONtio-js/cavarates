@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
-import { CheckCircleIcon, XCircleIcon } from "lucide-react"
+import { CheckCircleIcon, TrashIcon, XCircleIcon } from "lucide-react"
 import PendingBadge from "@/app/(admin)/components/PendingBadge";
-import { approveWithdrawalRequest, getAllWithdrawalRequest, rejectWithdrawalRequest } from "@/actions/admin/getWithdrawalRequest";
+import { approveWithdrawalRequest, deleteWithdrawalRequest, getAllWithdrawalRequest, rejectWithdrawalRequest } from "@/actions/admin/getWithdrawalRequest";
 import SuccessBadge from "@/app/(admin)/components/SuccessBadge";
 import CancelledBadge from "@/app/(admin)/components/CancelledBadge";
 const Withdrawal = async () => {
@@ -45,8 +45,16 @@ const Withdrawal = async () => {
                         "use server"
                         await rejectWithdrawalRequest(request.id);
                     }}>
-                    <Button variant="outline" className="bg-red-500 text-white">
+                    <Button variant="outline" className="bg-amber-500 text-white">
                         <XCircleIcon className="w-4 h-4" />
+                    </Button>
+                    </form>
+                    <form action={async () => {
+                        "use server"
+                        await deleteWithdrawalRequest(request.id);
+                    }}>
+                    <Button variant="outline" className="bg-red-500 text-white">
+                        <TrashIcon className="w-4 h-4" />
                     </Button>
                     </form>
                 </TableCell>

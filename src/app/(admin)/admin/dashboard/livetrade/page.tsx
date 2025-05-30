@@ -2,8 +2,20 @@ import TradeForm from '@/app/(admin)/components/form/TradeForm';
 import BalanceForm from '@/app/(admin)/components/form/BalanceForm';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { getAllUsers } from '../../../../../actions/admin/users';
-import { User } from '@/generated/prisma';
 import UserSelect from '@/app/(admin)/components/UserSelect';
+
+type UserData = {
+	id: string;
+	name: string;
+	email: string;
+	phone: string;
+	walletBalance: number | null;
+	refcode: string | null;
+	isVerified: boolean;
+	createdAt: Date;
+	profitBalance?: number | null;
+	investmentBalance?: number | null;
+};
 
 export default async function LiveTrade({
 	searchParams,
@@ -12,7 +24,7 @@ export default async function LiveTrade({
 }) {
 	const users = await getAllUsers();
 	const params = await searchParams;
-	const selectedUser: User | null = params.userId
+	const selectedUser: UserData | null = params.userId
 		? users.find((user) => user.id === params.userId) || null
 		: null;
 

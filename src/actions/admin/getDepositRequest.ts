@@ -1,7 +1,12 @@
 import { db } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
 import { sendEmail } from '@/lib/email';
+import { unstable_noStore as noStore } from 'next/cache';
+
 export const getDepositRequest = async () => {
+	// Prevent caching of this route
+	noStore();
+
 	const depositRequest = await db.transaction.findMany({
 		where: {
 			transactionType: 'deposit',
@@ -52,7 +57,7 @@ export const approveDepositRequest = async (
 	}
 
 	// Update transaction status
-	 await db.transaction.update({
+	await db.transaction.update({
 		where: {
 			id: transactionId,
 		},
@@ -111,5 +116,17 @@ export const rejectDepositRequest = async (transactionId: string) => {
 
 	return {
 		success: 'Deposit request rejected successfully',
+	};
+};
+
+export const deleteDepositRequest = async (transactionId: string) => {
+	await db.transaction.delete({
+		where: {
+			id: transactionId,
+		},
+	});
+	revalidatePath('/admin/dashboard/deposit');
+	return {
+		success: 'Deposit request deleted successfully',
 	};
 };

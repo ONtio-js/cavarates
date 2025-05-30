@@ -1,8 +1,28 @@
 import { db } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
+
 export const getAllUsers = async () => {
-	const users = await db.user.findMany();
-	return users;
+	try {
+		const users = await db.user.findMany({
+			select: {
+				id: true,
+				name: true,
+				email: true,
+				phone: true,
+				walletBalance: true,
+				refcode: true,
+				isVerified: true,
+				createdAt: true,
+				profitBalance: true,
+				investmentBalance: true,
+			},
+		});
+		console.log('Fetched users:', JSON.stringify(users, null, 2));
+		return users;
+	} catch (error) {
+		console.error('Error fetching users:', error);
+		throw error;
+	}
 };
 
 export const getUserById = async (id: string) => {

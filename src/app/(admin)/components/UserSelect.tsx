@@ -7,11 +7,23 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select';
-import { User } from '@/generated/prisma';
 import { useRouter } from 'next/navigation';
 
+type UserData = {
+	id: string;
+	name: string;
+	email: string;
+	phone: string;
+	walletBalance: number | null;
+	refcode: string | null;
+	isVerified: boolean;
+	createdAt: Date;
+	profitBalance?: number | null;
+	investmentBalance?: number | null;
+};
+
 interface UserSelectProps {
-	users: User[];
+	users: UserData[];
 	defaultUserId?: string;
 }
 

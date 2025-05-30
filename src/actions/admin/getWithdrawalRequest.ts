@@ -50,3 +50,13 @@ export const rejectWithdrawalRequest = async (id: string) => {
 	revalidatePath('/admin/dashboard/withdrawal');
 	return withdrawalRequest;
 };
+
+export const deleteWithdrawalRequest = async (id: string) => {
+	await db.transaction.delete({
+		where: { id },
+	});
+	revalidatePath('/admin/dashboard/withdrawal');
+	return {
+		success: 'Withdrawal request deleted successfully',
+	};
+};

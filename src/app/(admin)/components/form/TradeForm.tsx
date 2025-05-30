@@ -12,12 +12,25 @@ import {
 	FormControl,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { User } from '@/generated/prisma';
 import { useTransition } from 'react';
 import { placeTrade } from '@/actions/admin/placeTrade';
 import { Loader } from '@/components/Loader';
 import { toast } from 'sonner';
-const TradeForm = ({ user }: { user: User | null }) => {
+
+type UserData = {
+	id: string;
+	name: string;
+	email: string;
+	phone: string;
+	walletBalance: number | null;
+	refcode: string | null;
+	isVerified: boolean;
+	createdAt: Date;
+	profitBalance?: number | null;
+	investmentBalance?: number | null;
+};
+
+const TradeForm = ({ user }: { user: UserData | null }) => {
 	const [isPending, startTransition] = useTransition();
 
 	const form = useForm<z.infer<typeof TradeSchema>>({
@@ -43,7 +56,7 @@ const TradeForm = ({ user }: { user: User | null }) => {
 			});
 			return;
 		}
-		
+
 		startTransition(async () => {
 			try {
 				const result = await placeTrade({
@@ -78,7 +91,7 @@ const TradeForm = ({ user }: { user: User | null }) => {
 				className='space-y-4 w-full mt-10'
 			>
 				{isPending && <Loader />}
-			
+
 				{!user && (
 					<div className='p-3 bg-yellow-100 text-yellow-700 rounded-md'>
 						Please select a user from the dropdown above
