@@ -1,7 +1,9 @@
 import { db } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
+import { unstable_noStore as noStore } from 'next/cache';
 
 export const getAllUsers = async () => {
+	noStore();
 	try {
 		const users = await db.user.findMany({
 			select: {
@@ -17,7 +19,6 @@ export const getAllUsers = async () => {
 				investmentBalance: true,
 			},
 		});
-		console.log('Fetched users:', JSON.stringify(users, null, 2));
 		return users;
 	} catch (error) {
 		console.error('Error fetching users:', error);
