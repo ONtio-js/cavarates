@@ -29,14 +29,14 @@ const ViewUser = async ({ params }: { params: Promise<{ id: string }> }) => {
 					<span className='font-bold'>Phone:</span> {user.phone}
 				</p>
 				<p className='text-sm text-gray-500 bg-gray-100 p-2 rounded-md'>
-					<span className='font-bold'>Address:</span> {user.address}
+					<span className='font-bold'>BTC Address:</span> {user.btcAddress}
 				</p>
 				<p className='text-sm text-gray-500 bg-gray-100 p-2 rounded-md'>
-					<span className='font-bold'>Country:</span> {user.country}
+					<span className='font-bold'>ETH Address:</span> {user.ethAddress}
 				</p>
 				<p className='text-sm text-gray-500 bg-gray-100 p-2 rounded-md'>
-					<span className='font-bold'>Account Type:</span>{' '}
-					{user.AccountType}
+					<span className='font-bold'>USDT Address:</span>{' '}
+					{user.usdtAddress}
 				</p>
 				<p className='text-sm text-gray-500 bg-gray-100 p-2 rounded-md'>
 					<span className='font-bold'>Registration Date:</span>{' '}
