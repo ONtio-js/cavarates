@@ -39,8 +39,8 @@ const ViewUser = async ({ params }: { params: Promise<{ id: string }> }) => {
 					{user.usdtAddress}
 				</p>
 				<p className='text-sm text-gray-500 bg-gray-100 p-2 rounded-md'>
-					<span className='font-bold'>Registration Date:</span>{' '}
-					{user.createdAt.toLocaleDateString()}
+					<span className='font-bold'>Country:</span>{' '}
+					{user.country}
 				</p>
 				<p className='text-sm text-gray-500 bg-gray-100 p-2 rounded-md'>
 					<span className='font-bold'>KYC Status:</span>{' '}
