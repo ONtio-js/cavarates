@@ -1,7 +1,10 @@
 import { db } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
 import { sendEmail } from '@/lib/email';
+import { unstable_noStore as noStore } from 'next/cache';
+
 export const getAllWithdrawalRequest = async () => {
+	noStore();
 	const withdrawalRequest = await db.transaction.findMany({
 		where: {
 			transactionType: 'withdrawal',
