@@ -15,7 +15,7 @@ const Deposit = async () => {
 			minDeposit: '100',
 			maxDeposit: '1000',
 			network: 'Brc',
-			address: 'bc1qjulyrhg6zsxfy44f7g744arwn4l0dqsxzdmeau',
+			address: 'bc1q3pgqu9kx07lgx2h4zh9r2chkuyu4l60jmu454f',
 			fee: '0.1%',
 			description:
 				'Bitcoin is a digital currency that is decentralized and allows users to send and receive payments without intermediaries.',
